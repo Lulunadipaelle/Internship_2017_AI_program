@@ -9,3 +9,10 @@ Player::~Player()
 {
 }
 
+void Player::setPlayer(bool newPlayer) {
+    player = newplayer;
+}
+
+bool Player::getPlayer() {
+    return player;
+}

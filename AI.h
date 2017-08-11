@@ -8,14 +8,14 @@ class Board {
     Board();
     Box** board[line][row];
     void getScore(); //Actual Score in the board for the AI
-    void setBox(row, player); //Place a Token on the first Box available 
+    void setBox(int row, Player player); //Place a Token on the first Box available 
     void getBox(line, row); //
 };
 
 class Player {
     Player();
     bool player;
-    setPlayer(bool player); //Change the active player = new turn
+    setPlayer(bool newPlayer); //Change the active player = new turn
     getPlayer(); //Gives the active player
 };
 
