@@ -4,13 +4,6 @@
 #include <string>
 
 
-class Board {
-    Board();
-    Box** board[line][row];
-    void getScore(); //Actual Score in the board for the AI
-    void setBox(int row, Player player); //Place a Token on the first Box available 
-    void getBox(line, row); //
-};
 
 class Player {
     Player();
@@ -24,5 +17,16 @@ class Box {
     bool isToken; //Indicates if a token is in the box
     Player color; //Whose is the token if any
 };
+
+class Board {
+    Board(Box** tab);
+    Box** board[line][row];
+    void getScore(); //Actual Score in the board for the AI
+    void setBox(int row, Player player); //Place a Token on the first Box available 
+    void getBox(line, row); //
+    
+};
+
+
 
 #ENDIF

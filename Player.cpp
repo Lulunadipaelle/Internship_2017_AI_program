@@ -5,9 +5,9 @@ Player::Player()
     player = true;
 }
 
-Player::~Player()
+/*Player::~Player()
 {
-}
+}*/
 
 void Player::setPlayer(bool newPlayer) {
     player = newplayer;

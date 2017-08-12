@@ -1,17 +1,17 @@
 #include "AI.h"
 
-Board::Board()
+Board::Board(Box** tab)
 {
-    
+    board = tab;
     //Actual Score in the board for the AI
 
     void setBox(row, player); //Place a Token on the first Box available 
     void getBox(line, row); //    
 }
 
-Board::~Board()
+/*Board::~Board()
 {
-}
+}*/
 
 void Board:: getScore() {
     //TODO Définir le score à la fin
@@ -22,5 +22,5 @@ void Board::setBox(int row, Player player) {
 }
 
 void Board::getBox(int line, int row) {
-    
+    return board[line][row];
 }

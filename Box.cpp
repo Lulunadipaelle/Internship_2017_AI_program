@@ -6,7 +6,7 @@ Box::Box()
     
 }
 
-Box::~Box()
+/*Box::~Box()
 {
-}
+}*/
 
