@@ -2,7 +2,7 @@
 
 Board::Board(Box** tab)
 {
-    board = tab;
+    array = tab;
     //Actual Score in the board for the AI
 
     void setBox(row, player); //Place a Token on the first Box available 
@@ -19,8 +19,9 @@ void Board:: getScore() {
     
 }
 
-void Board::setBox(int row, Player player) {
+void Board::setToken(int row, Player player) {
  
+
 }
 
 Box Board::getBox(int line, int row) {

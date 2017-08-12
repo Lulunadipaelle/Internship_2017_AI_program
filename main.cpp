@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 int Recursive(int depth, Player P, Board board) {
     
     
-    if ((depth == 1) || (abs(board.getScore())) = 100) { //Conditions d'arrêt du calcul : on ne peut plus jouer ou l'un des joueurs a gagné
+    if (depth == 1) { //Conditions d'arrêt du calcul : on ne peut plus jouer ou l'un des joueurs a gagné
         return board.getScore();
     } else {
         return BestPlay(P, board, depth);
@@ -25,16 +25,19 @@ int Recursive(int depth, Player P, Board board) {
 }
 
 int BestPlay(Player P, Board board, int depth) {
+    int bestScore = 1;
+    int row = -1;
     for int (i=0;i<=6;i++) {
-        Board newBoard = board;
-        if 
+        //Vérifier que la colonne n'est pas pleine
+        if board.getBox(6,i).isEmpty
+        
+        
         newBoard.setBox(i, P);
         if (P == true) {
                 return max(score max actuel, Recursive(depth-1, P, newboard));
-            }
         } else {
                 return -max( - score max actuel, Recursive(depth-1, P, newboard));
-            }
         }
+        //annuler le coup
     }
 }
