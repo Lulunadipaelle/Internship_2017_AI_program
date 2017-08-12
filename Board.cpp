@@ -14,13 +14,15 @@ Board::Board(Box** tab)
 }*/
 
 void Board:: getScore() {
+    stdin << "Displaying AI's Score (WIP)" << endl;
     //TODO Définir le score à la fin
-}
-
-void Board::setBox(int row, Player player) {
     
 }
 
-void Board::getBox(int line, int row) {
+void Board::setBox(int row, Player player) {
+ 
+}
+
+Box Board::getBox(int line, int row) {
     return board[line][row];
 }
