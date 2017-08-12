@@ -36,10 +36,10 @@ class Board {
     int getScore(); //Actual Score in the board for the AI
     void setToken(int row, Player player); //Place a Token on the first Box available 
     Box getBox(int line, int row); //get the box state on selected line and row (empty or not, color of the token)
-    Board(Box** tab[6][7], int line, int row);
+    Board(Box tab[6][7], int line, int row);
     
     private:
-    Box** array[6][7];
+    Box array[6][7];
     
     
 };
