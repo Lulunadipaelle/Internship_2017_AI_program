@@ -10,7 +10,7 @@ Player::Player()
 }*/
 
 void Player::setPlayer(bool newPlayer) {
-    player = newplayer;
+    player = newPlayer;
 }
 
 bool Player::getPlayer() {

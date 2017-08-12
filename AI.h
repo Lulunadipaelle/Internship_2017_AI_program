@@ -1,35 +1,50 @@
-#IFNDEF __IA_H__
-#DEFINE __IA_H__
-#include <stdlib>
+#ifndef __IA_H__
+#define __IA_H__
 #include <string>
+#include <iostream>
 
 
 
 class Player {
-    Player();
-    bool player;
+    public:
     void setPlayer(bool newPlayer); //Change the active player = new turn
     bool getPlayer(); //Gives the active player
+    
+    Player();
+    
+    private:
+    bool player;
+    
 };
 
 class Box {
-    Box();
+    public:
     bool isEmpty; //Indicates if a token is in the box
-    Player color; //Whose is the token if any
     void setBox(Player player, bool token); //Play or cancel a play
     bool* getBox();
+    
+    Box();
+    
+    private:
+    Player color; //Whose is the token if any
+    
 };
 
 class Board {
-    Board(Box** tab);
-    Box** array[line][row];
-    void getScore(); //Actual Score in the board for the AI
+    
+    public:
+    int getScore(); //Actual Score in the board for the AI
     void setToken(int row, Player player); //Place a Token on the first Box available 
-    Box getBox(line, row); //get the box state on selected line and row (empty or not, color of the token)
+    Box getBox(int line, int row); //get the box state on selected line and row (empty or not, color of the token)
+    Board(Box** tab[6][7], int line, int row);
+    
+    private:
+    Box** array[6][7];
+    
     
 };
 
 int Recursive(int depth, Player P, Board board);
 int BestPlay(Player P, Board board, int depth);
 
-#ENDIF
+#endif

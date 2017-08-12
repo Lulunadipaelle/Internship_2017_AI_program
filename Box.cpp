@@ -3,7 +3,7 @@
 Box::Box()
 {
     isEmpty = true;
-    color.setPlayer(false);
+    color = Player();
     
 }
 
@@ -17,7 +17,8 @@ void Box::setBox(Player player, bool token) {
 }
 
 bool* Box::getBox() {
-    return [isEmpty, color.getPlayer()];
+    bool res[2] = {isEmpty, color.getPlayer()};
+    return res;
 }
 /*Box::~Box()
 {
