@@ -2,7 +2,8 @@
 
 Box::Box()
 {
-    isToken = false;
+    isEmpty = true;
+    color.setPlayer(false);
     
 }
 

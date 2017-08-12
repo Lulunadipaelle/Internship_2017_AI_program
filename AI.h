@@ -14,7 +14,7 @@ class Player {
 
 class Box {
     Box();
-    bool isToken; //Indicates if a token is in the box
+    bool isEmpty; //Indicates if a token is in the box
     Player color; //Whose is the token if any
 };
 
