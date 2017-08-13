@@ -1,3 +1,6 @@
 # Internship_2017_AI_tester
-My stuff
-I like my stuff
+
+This Project is a AI tester for a Connect 4 game.
+
+The prototypes for all the classes are in AI.h
+

@@ -21,7 +21,7 @@ int Board:: getScore() {
 
 void Board::setToken(int row, Player player) {
     int i=0;
-    while ((i<7) && (&array[i][row].isEmpty == false)) {
+    while ((i<7) && (!array[i][row].isEmpty())) {
         i++;
     }
     if (i == 6) {
@@ -32,7 +32,7 @@ void Board::setToken(int row, Player player) {
 }
  void Board::cancelPlay(int row, Player player) {
     int i=5;
-    while ((i>0) && (&array[i][row].isEmpty == true)) {
+    while ((i>0) && (array[i][row].isEmpty())) {
         i--;
     }
         array[i][row].setBox(player, false);
