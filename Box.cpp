@@ -2,23 +2,26 @@
 
 Box::Box()
 {
-    isEmpty = true;
+    Empty = true;
     color = Player();
     
 }
 
 void Box::setBox(Player player, bool token) {
     if (token == true) {
-        isEmpty = false;
+        Empty = false;
         color.setPlayer(player.getPlayer());
     } else {
-        isEmpty = true;
+        Empty = true;
     }
 }
 
-bool* Box::getBox() {
-    bool res[2] = {isEmpty, color.getPlayer()};
-    return res;
+bool Box::isEmpty() {
+    return Empty;
+}
+
+bool Box::whichColor() { //à refaire
+    return color.getPlayer();
 }
 /*Box::~Box()
 {

@@ -19,9 +19,10 @@ class Player {
 
 class Box {
     public:
-    bool isEmpty; //Indicates if a token is in the box
+    bool Empty; //Indicates if a token is in the box
     void setBox(Player player, bool token); //Play or cancel a play
-    bool* getBox();
+    bool isEmpty();
+    bool whichColor();
     
     Box();
     

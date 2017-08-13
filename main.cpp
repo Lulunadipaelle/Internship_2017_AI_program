@@ -26,16 +26,20 @@ int BestPlay(Player P, Board board, int depth) {
     int row = -1;
     for (int i=0;i<=6;i++) {
         //Vérifier que la colonne n'est pas pleine
-        if (board.getBox(6,i).isEmpty)
-        
-        
-        //newBoard.setBox(i, P);
-        if (P.getPlayer() == true) {
+        if (board.getBox(6,i).isEmpty()==true) {        
+            board.setToken(i, P); //On joue dans la colonne non vide
+            if board.getScore() = 100 {
+                
+            }
+
+/*            if (P.getPlayer() == true) {
+                
 //                return max(score max actuel, Recursive(depth-1, P, newboard));
-        } else {
+            } else {
 //                return -max( - score max actuel, Recursive(depth-1, P, newboard));
-        }
+            }*/
         //annuler le coup
+        }
     }
     return 0;
 }
