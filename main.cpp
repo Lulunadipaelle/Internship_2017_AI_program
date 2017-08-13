@@ -28,9 +28,9 @@ int BestPlay(Player P, Board board, int depth) {
         //Vérifier que la colonne n'est pas pleine
         if (board.getBox(6,i).isEmpty()==true) {        
             board.setToken(i, P); //On joue dans la colonne non vide
-            if board.getScore() = 100 {
+/*            if (board.getScore() = 100) { 
                 
-            }
+            }*/
 
 /*            if (P.getPlayer() == true) {
                 

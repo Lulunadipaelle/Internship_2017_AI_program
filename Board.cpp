@@ -20,9 +20,24 @@ int Board:: getScore() {
 }
 
 void Board::setToken(int row, Player player) {
- 
-
+    int i=0;
+    while ((i<7) && (&array[i][row].isEmpty == false)) {
+        i++;
+    }
+    if (i == 6) {
+        std::cout << "Error : full row (Board::setToken)";
+    } else {
+        array[i][row].setBox(player, true);
+    }
 }
+ void Board::cancelPlay(int row, Player player) {
+    int i=5;
+    while ((i>0) && (&array[i][row].isEmpty == true)) {
+        i--;
+    }
+        array[i][row].setBox(player, false);
+    
+ }
 
 Box Board::getBox(int line, int row) {
     return this->array[line][row];

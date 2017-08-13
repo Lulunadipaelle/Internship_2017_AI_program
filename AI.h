@@ -35,7 +35,8 @@ class Board {
     
     public:
     int getScore(); //Actual Score in the board for the AI
-    void setToken(int row, Player player); //Place a Token on the first Box available 
+    void setToken(int row, Player player); //Place a Token on the first Box available
+    void cancelPlay(int row, Player player); //Cancel last token played in selected row
     Box getBox(int line, int row); //get the box state on selected line and row (empty or not, color of the token)
     Board(Box tab[6][7], int line, int row);
     
