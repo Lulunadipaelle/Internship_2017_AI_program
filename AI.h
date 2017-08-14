@@ -2,6 +2,7 @@
 #define __IA_H__
 #include <string>
 #include <iostream>
+#include <fstream>
 
 
 
@@ -21,8 +22,8 @@ class Box {
     public:
     bool Empty; //Indicates if a token is in the box
     void setBox(Player player, bool token); //Play or cancel a play
-    bool isEmpty();
-    bool whichColor();
+    bool isEmpty(); //Indicates if a Box is Empty or not
+    bool whichColor(); //Indicate the color of the token (true = AI)
     
     Box();
     
@@ -48,5 +49,6 @@ class Board {
 
 int* Recursive(int depth, Player P, Board board);
 int* BestPlay(Player P, Board board, int depth);
+void BoardToFile(Board board);
 
 #endif

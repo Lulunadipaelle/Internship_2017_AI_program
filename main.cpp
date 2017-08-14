@@ -1,11 +1,15 @@
 #include "AI.h"
+
 using namespace std;
+
+
 int main(int argc, char **argv)
 {
 	std::cout << "Hello, World !\n" << endl;
 	//Initialiser le board ici
-    Box** playboard[7][6];
-    
+    Box source[6][7];
+    Board playboard(source, 6, 7);
+    BoardToFile(playboard);
     return 0;
 }
 
@@ -47,4 +51,26 @@ int* BestPlay(Player P, Board board, int depth) {
         }
     }
     return res;
+}
+
+void BoardToFile(Board board) {
+    ofstream boardFile("board.txt", ios::out | ios::trunc);
+    if (boardFile) {
+        for (int i=5;i>=0;i--) {
+            for (int j=0;j<7;j++) {
+                if (board.getBox(i, j).isEmpty() == true) {
+                    boardFile << "0";
+                } else {
+                    if (board.getBox(i, j).whichColor() == true) {
+                        boardFile << "1";
+                    } else {
+                        boardFile << "2";
+                    }
+                }
+            }
+            boardFile << endl;
+        }
+    } else {
+        cerr << "Error while opening boardFile (BoardToFile)";
+    }
 }
