@@ -46,7 +46,7 @@ class Board {
     
 };
 
-int Recursive(int depth, Player P, Board board);
-int BestPlay(Player P, Board board, int depth);
+int* Recursive(int depth, Player P, Board board);
+int* BestPlay(Player P, Board board, int depth);
 
 #endif

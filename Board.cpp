@@ -13,7 +13,7 @@ for(int i = 0;i<6;i++){
 {
 }*/
 
-int Board:: getScore() {
+int Board::getScore() {
     return 888;
     //TODO Définir le score à la fin
     
