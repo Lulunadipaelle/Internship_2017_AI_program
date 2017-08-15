@@ -38,7 +38,9 @@ void Board::setToken(int row, Player player) {
         array[i][row].setBox(player, false);
     
  }
-
+void Board::setBox(int line, int row, Player player, bool token) {
+    array[line][row].setBox(player, token);
+}
 Box Board::getBox(int line, int row) {
     return this->array[line][row];
 }

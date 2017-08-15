@@ -7,9 +7,19 @@ int main(int argc, char **argv)
 {
 	std::cout << "Hello, World !\n" << endl;
 	//Initialiser le board ici
+    Player p1, p2;
+    p2.setPlayer(false);
     Box source[6][7];
     Board playboard(source, 6, 7);
-    BoardToFile(playboard);
+    playboard.setToken(3,p1);
+    playboard.setToken(4,p2);
+    playboard.setToken(3,p1);
+    playboard.setToken(3,p1);
+    playboard.setToken(4,p2);
+    playboard.setToken(3,p1);
+    BoardToFile(playboard, "board.txt");
+    Board newBoard = FileToBoard("board.txt");
+    BoardToFile(newBoard, "newboard.txt");
     return 0;
 }
 
@@ -53,24 +63,61 @@ int* BestPlay(Player P, Board board, int depth) {
     return res;
 }
 
-void BoardToFile(Board board) {
-    ofstream boardFile("board.txt", ios::out | ios::trunc);
+void BoardToFile(Board board, char const *filename) {
+    ofstream boardFile(filename, ios::out | ios::trunc);
     if (boardFile) {
         for (int i=5;i>=0;i--) {
             for (int j=0;j<7;j++) {
                 if (board.getBox(i, j).isEmpty() == true) {
-                    boardFile << "0";
+                    boardFile << "0 ";
                 } else {
                     if (board.getBox(i, j).whichColor() == true) {
-                        boardFile << "1";
+                        boardFile << "1 ";
                     } else {
-                        boardFile << "2";
+                        boardFile << "2 ";
                     }
                 }
             }
             boardFile << endl;
         }
+        boardFile.close();
     } else {
-        cerr << "Error while opening boardFile (BoardToFile)";
+        cerr << "Error while opening boardFile (BoardToFile)" <<endl;
     }
+}
+
+Board FileToBoard(char const *filename) {
+    Box source[6][7];
+    int stock;
+    bool test = true;
+    std::cout << test <<endl;
+    Player p1,p2;
+    p2.setPlayer(false);
+    Board board(source, 6, 7);
+    ifstream boardFile(filename, ios::in);
+    if (boardFile) {
+        for (int i=5;i>=0;i--) {
+            for (int j =0;j<7;j++) {
+                boardFile >> stock;
+                std::cout << stock;
+                switch (stock) {
+                    case 0:
+                        board.setBox(i,j,p1,false);
+                        
+                    break;
+                    case 1:
+                        board.setBox(i,j,p1,true);
+                        
+                    break;
+                    case 2:
+                        board.setBox(i,j,p2,true);
+                    break;
+                }
+            }
+        }
+        boardFile.close();
+    } else {
+        cerr << "Error while opening boardFile (FileToBoard)" << endl;
+    }
+    return board;
 }

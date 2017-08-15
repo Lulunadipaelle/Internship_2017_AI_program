@@ -38,6 +38,7 @@ class Board {
     int getScore(); //Actual Score in the board for the AI
     void setToken(int row, Player player); //Place a Token on the first Box available
     void cancelPlay(int row, Player player); //Cancel last token played in selected row
+    void setBox(int line, int row, Player player, bool token); //Set Boxes to modify or init the playboard
     Box getBox(int line, int row); //get the box state on selected line and row (empty or not, color of the token)
     Board(Box tab[6][7], int line, int row);
     
@@ -49,6 +50,6 @@ class Board {
 
 int* Recursive(int depth, Player P, Board board);
 int* BestPlay(Player P, Board board, int depth);
-void BoardToFile(Board board);
-
+void BoardToFile(Board board, char const *filename);
+Board FileToBoard(char const *filename);
 #endif
