@@ -48,8 +48,8 @@ class Board {
     
 };
 
-int* Recursive(int depth, Player P, Board board);
-int* BestPlay(Player P, Board board, int depth);
+std::pair<int, int> Recursive(int depth, Player P, Board board, int row);
+std::pair<int, int> BestPlay(Player P, Board board, int depth);
 void BoardToFile(Board board, char const *filename);
 Board FileToBoard(char const *filename);
 #endif
