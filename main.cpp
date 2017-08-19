@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         cin >> row;
         playboard.setToken(row, p2);        
         std::cout << "Fine, my turn now !" << endl;
-        std::pair<int, int> play = Recursive(20, p1, playboard, 0);
+        std::pair<int, int> play = BestPlay(p1, playboard, 3);
         
         playboard.setToken(play.second, p1);
         /*if (play.first >= 2) {
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 }
 
 
-std::pair<int, int> Recursive(int depth, Player P, Board board, int row) {
+/*std::pair<int, int> Recursive(int depth, Player P, Board board, int row) {
     if (depth == 1) { //Conditions d'arrêt du calcul : on ne peut plus jouer ou l'un des joueurs a gagné
         //int res[2] ;
         int res = board.getScoreWinLose(row);
@@ -60,28 +60,34 @@ std::pair<int, int> Recursive(int depth, Player P, Board board, int row) {
         return BestPlay(P, board, depth);
 
     }
-}
+}*/
 
 std::pair<int, int> BestPlay(Player P, Board board, int depth) {
-    int bestScore = 1;
+    int bestScore = -1;
     int row = -1;
+    int score = -1;
     //int res[2] = {bestScore, row};
     for (int i=0;i<=6;i++) {
         //Vérifier que la colonne n'est pas pleine
-        if (board.getBox(6,i).isEmpty()==true) {        
+        if (board.getBox(5,i).isEmpty()==true) {        
             board.setToken(i, P); //On joue dans la colonne non vide
-            if (board.getScoreWinLose(i) == 2) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
-                int score = board.getScoreWinLose(i);
-                std::cout << score << endl;
-                board.cancelPlay(i, P);
-                //res[0] = score;
-                //res[1] = i;
+            if (board.getScoreWinLose(i, P) == 2) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
+                score = 2;
+
+                board.cancelPlay(i);
                 return std::make_pair(score, i);
             } else { //Sinon on continue de parcourir l'arbre en cherchant le meilleur score
-                //P.setPlayer(!P.getPlayer());
-                std::pair<int, int> res = Recursive(depth-1, P, board, i);
-                int score = res.first;
-                board.cancelPlay(i, P);
+                
+                if (depth == 1) {
+                    score = board.getScoreWinLose(i,P);
+                    cout << "score : " << score << endl;
+                } else {
+                    P.setPlayer(!P.getPlayer());
+                    std::pair<int, int> res = BestPlay(P, board, depth-1);
+                    score = res.first;
+                    P.setPlayer(!P.getPlayer());
+                }
+                board.cancelPlay(i);
                 if (score > bestScore) {
                     bestScore = score;
                     row = i;
@@ -89,6 +95,11 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
             }
         }
     }
+    //si le board est plein -> match nul
+    if (row ==-1) {
+        bestScore = 1;
+    }
+    std::cout << "return : " << bestScore << row << endl;
     return std::make_pair(bestScore, row);
 }
 
