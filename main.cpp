@@ -31,19 +31,20 @@ int main(int argc, char **argv)
         cin >> row;
         playboard.setToken(row, p2);        
         std::cout << "Fine, my turn now !" << endl;
-        std::pair<int, int> play = Recursive(4, p1, playboard, 0);
+        std::pair<int, int> play = Recursive(20, p1, playboard, 0);
+        
         playboard.setToken(play.second, p1);
-        if (play.first >= 100000) {
+        /*if (play.first >= 2) {
             std::cout << "I won !" << endl;
             break;
-        } else if (play.first <= 100000) {
+        } else if (play.first <= 0) {
             std::cout << "You won !" << endl;
             break;
-        } else {
+        } else { */
         BoardToFile(playboard, "playboard.txt");
 
     
-        }
+        //}
     } while (1);
     
     return 0;
@@ -53,7 +54,7 @@ int main(int argc, char **argv)
 std::pair<int, int> Recursive(int depth, Player P, Board board, int row) {
     if (depth == 1) { //Conditions d'arrêt du calcul : on ne peut plus jouer ou l'un des joueurs a gagné
         //int res[2] ;
-        int res = board.getScore();
+        int res = board.getScoreWinLose(row);
         return std::make_pair(res, row);
     } else {
         return BestPlay(P, board, depth);
@@ -69,13 +70,15 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
         //Vérifier que la colonne n'est pas pleine
         if (board.getBox(6,i).isEmpty()==true) {        
             board.setToken(i, P); //On joue dans la colonne non vide
-            if (board.getScore() == 100000) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
-                int score = board.getScore();
+            if (board.getScoreWinLose(i) == 2) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
+                int score = board.getScoreWinLose(i);
+                std::cout << score << endl;
                 board.cancelPlay(i, P);
                 //res[0] = score;
                 //res[1] = i;
                 return std::make_pair(score, i);
             } else { //Sinon on continue de parcourir l'arbre en cherchant le meilleur score
+                //P.setPlayer(!P.getPlayer());
                 std::pair<int, int> res = Recursive(depth-1, P, board, i);
                 int score = res.first;
                 board.cancelPlay(i, P);
@@ -147,3 +150,4 @@ Board FileToBoard(char const *filename) {
     }
     return board;
 }
+

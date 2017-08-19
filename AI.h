@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include <windows.h>
 
 
 class Player {
@@ -35,7 +35,7 @@ class Box {
 class Board {
     
     public:
-    int getScore(); //Actual Score in the board for the AI
+    int getScoreWinLose(int row); //Actual Score in the board for the AI
     void setToken(int row, Player player); //Place a Token on the first Box available
     void cancelPlay(int row, Player player); //Cancel last token played in selected row
     void setBox(int line, int row, Player player, bool token); //Set Boxes to modify or init the playboard
