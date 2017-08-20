@@ -72,8 +72,11 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
         if (board.getBox(5,i).isEmpty()==true) {        
             board.setToken(i, P); //On joue dans la colonne non vide
             if (board.getScoreWinLose(i, P) == 2) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
-                score = 2;
-
+                if (P.getPlayer() == true) {
+                    score = 2;
+                } else {
+                    score = 0;
+                }
                 board.cancelPlay(i);
                 return std::make_pair(score, i);
             } else { //Sinon on continue de parcourir l'arbre en cherchant le meilleur score
@@ -84,7 +87,11 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
                 } else {
                     P.setPlayer(!P.getPlayer());
                     std::pair<int, int> res = BestPlay(P, board, depth-1);
-                    score = res.first;
+                    if (P.getPlayer() == true) {
+                        score = res.first;
+                    } else {
+                        score = 2-res.first;
+                    }
                     P.setPlayer(!P.getPlayer());
                 }
                 board.cancelPlay(i);
