@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         cin >> row;
         playboard.setToken(row, p2);        
         std::cout << "Fine, my turn now !" << endl;
-        std::pair<int, int> play = BestPlay(p1, playboard, 10);
+        std::pair<int, int> play = BestPlay(p1, playboard, 7);
         
         playboard.setToken(play.second, p1);
         /*if (play.first >= 2) {
