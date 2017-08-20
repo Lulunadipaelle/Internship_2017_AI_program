@@ -15,12 +15,12 @@ for(int i = 0;i<6;i++){
 
 int Board::getScoreWinLose(int row, Player P) { // TODO rajouter Player player en entrée pour adapter le score selon le joueur ?
     int line=0;
-    int winScore;
-    if (P.getPlayer() == true) {
+    int winScore = 2;
+    /*if (P.getPlayer() == true) {
         winScore = 2;
     } else if (P.getPlayer() == false) {
         winScore = 2;
-    }
+    }*/
     for (int i=5;i>=0;i--) {
         if (array[i][row].isEmpty() == false) {
             line = i;
