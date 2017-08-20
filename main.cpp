@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         cin >> row;
         playboard.setToken(row, p2);        
         std::cout << "Fine, my turn now !" << endl;
-        std::pair<int, int> play = BestPlay(p1, playboard, 3);
+        std::pair<int, int> play = BestPlay(p1, playboard, 10);
         
         playboard.setToken(play.second, p1);
         /*if (play.first >= 2) {
@@ -72,26 +72,22 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
         if (board.getBox(5,i).isEmpty()==true) {        
             board.setToken(i, P); //On joue dans la colonne non vide
             if (board.getScoreWinLose(i, P) == 2) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
-                if (P.getPlayer() == true) {
                     score = 2;
-                } else {
-                    score = 0;
-                }
                 board.cancelPlay(i);
-                return std::make_pair(score, i);
+                if (P.getPlayer() == true) {
+                    return std::make_pair(score, i);
+                } else {
+                    return std::make_pair(2-score,i);
+                }
             } else { //Sinon on continue de parcourir l'arbre en cherchant le meilleur score
                 
                 if (depth == 1) {
                     score = board.getScoreWinLose(i,P);
-                    cout << "score : " << score << endl;
+                    //cout << "score : " << score << endl;
                 } else {
                     P.setPlayer(!P.getPlayer());
                     std::pair<int, int> res = BestPlay(P, board, depth-1);
-                    if (P.getPlayer() == true) {
                         score = res.first;
-                    } else {
-                        score = 2-res.first;
-                    }
                     P.setPlayer(!P.getPlayer());
                 }
                 board.cancelPlay(i);
@@ -106,8 +102,13 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
     if (row ==-1) {
         bestScore = 1;
     }
-    std::cout << "return : " << bestScore << row << endl;
-    return std::make_pair(bestScore, row);
+    if (P.getPlayer() == true) {
+        //std::cout << "return : " << bestScore << row << endl;
+        return std::make_pair(bestScore, row);
+    } else {
+        //std::cout << "return : " << 2-bestScore << row << endl;
+        return std::make_pair(2-bestScore, row);
+    }
 }
 
 void BoardToFile(Board board, char const *filename) {
