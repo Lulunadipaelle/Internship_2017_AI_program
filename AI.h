@@ -35,7 +35,7 @@ class Box {
 class Board {
     
     public:
-    int getScoreWinLose(int row, Player P); //Actual Score in the board for the AI
+    int getScoreWinLose(Player P); //Actual Score in the board for the AI
     void setToken(int row, Player player); //Place a Token on the first Box available
     void cancelPlay(int row); //Cancel last token played in selected row
     void setBox(int line, int row, Player player, bool token); //Set Boxes to modify or init the playboard

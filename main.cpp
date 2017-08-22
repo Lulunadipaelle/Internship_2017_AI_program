@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         cin >> row;
         playboard.setToken(row, p2);        
         std::cout << "Fine, my turn now !" << endl;
-        std::pair<int, int> play = BestPlay(p1, playboard, 7);
+        std::pair<int, int> play = BestPlay(p1, playboard, 8);
         
         playboard.setToken(play.second, p1);
         /*if (play.first >= 2) {
@@ -71,7 +71,7 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
         //Vérifier que la colonne n'est pas pleine
         if (board.getBox(5,i).isEmpty()==true) {        
             board.setToken(i, P); //On joue dans la colonne non vide
-            if (board.getScoreWinLose(i, P) == 2) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
+            if (board.getScoreWinLose(P) == 2) { //Si on a gagné on renvoie la colonne où on doit jouer et le score pour win
                     score = 2;
                 board.cancelPlay(i);
                 if (P.getPlayer() == true) {
@@ -82,7 +82,7 @@ std::pair<int, int> BestPlay(Player P, Board board, int depth) {
             } else { //Sinon on continue de parcourir l'arbre en cherchant le meilleur score
                 
                 if (depth == 1) {
-                    score = board.getScoreWinLose(i,P);
+                    score = board.getScoreWinLose(P);
                     //cout << "score : " << score << endl;
                 } else {
                     P.setPlayer(!P.getPlayer());

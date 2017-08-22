@@ -13,22 +13,145 @@ for(int i = 0;i<6;i++){
 {
 }*/
 
-int Board::getScoreWinLose(int row, Player P) { // TODO rajouter Player player en entrée pour adapter le score selon le joueur ?
-    int line=0;
-    int winScore = 2;
+int Board::getScoreWinLose(Player P) { // TODO rajouter Player player en entrée pour adapter le score selon le joueur ?
+    //int line=0;
+    //int winScore = 2;
     /*if (P.getPlayer() == true) {
         winScore = 2;
     } else if (P.getPlayer() == false) {
         winScore = 2;
     }*/
-    for (int i=5;i>=0;i--) {
+/*    for (int i=5;i>=0;i--) {
         if (array[i][row].isEmpty() == false) {
             line = i;
             break;
         }
-    }
+    }*/
     //test si on a gagné
-    if ((line <3) && (row<=3)) {  // down left
+    for (int i=5;i>=3;i--) { //up right
+        for (int j=6;j>=3;j--) { 
+            if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                if ((array[i][j-1].isEmpty() == false) && (array[i][j-1].whichColor() == P.getPlayer())) {
+                    if ((array[i][j-2].isEmpty() == false) && (array[i][j-2].whichColor() == P.getPlayer())) {
+                        if ((array[i][j-3].isEmpty() == false) && (array[i][j-3].whichColor() == P.getPlayer())) {
+                            return 2; // --
+                        }
+                    }
+                }
+            } else if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                if ((array[i-1][j-1].isEmpty() == false) && (array[i-1][j-1].whichColor() == P.getPlayer())) {
+                    if ((array[i-2][j-2].isEmpty() == false) && (array[i-2][j-2].whichColor() == P.getPlayer())) {
+                        if ((array[i-3][j-3].isEmpty() == false) && (array[i-3][j-3].whichColor() == P.getPlayer())) {
+                            return 2; // /
+                        }
+                    }
+                }
+            } else if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                if ((array[i-1][j].isEmpty() == false) && (array[i-1][j].whichColor() == P.getPlayer())) {
+                    if ((array[i-2][j].isEmpty() == false) && (array[i-2][j].whichColor() == P.getPlayer())) {
+                        if ((array[i-3][j].isEmpty() == false) && (array[i-3][j].whichColor() == P.getPlayer())) {
+                            return 2; // |
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    for (int i=2;i>=0;i--) { //down right
+        for (int j=6;j>=3;j--) { 
+            if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                if ((array[i][j-1].isEmpty() == false) && (array[i][j-1].whichColor() == P.getPlayer())) {
+                    if ((array[i][j-2].isEmpty() == false) && (array[i][j-2].whichColor() == P.getPlayer())) {
+                        if ((array[i][j-3].isEmpty() == false) && (array[i][j-3].whichColor() == P.getPlayer())) {
+                            return 2; // --
+                        }
+                    }
+                }
+            } else if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                if ((array[i+1][j-1].isEmpty() == false) && (array[i+1][j-1].whichColor() == P.getPlayer())) {
+                    if ((array[i+2][j-2].isEmpty() == false) && (array[i+2][j-2].whichColor() == P.getPlayer())) {
+                        if ((array[i+3][j-3].isEmpty() == false) && (array[i+3][j-3].whichColor() == P.getPlayer())) {
+                            return 2; // /
+                        }
+                    }
+                }
+            } else if ((array[i+3][j].isEmpty() == false) && (array[i+3][j].whichColor() == P.getPlayer())) {
+                if ((array[i+2][j].isEmpty() == false) && (array[i+2][j].whichColor() == P.getPlayer())) {
+                    if ((array[i+1][j].isEmpty() == false) && (array[i+1][j].whichColor() == P.getPlayer())) {
+                        if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                            return 2; // |
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    for (int i=5;i>=3;i--) { //up left
+        for (int j=3;j>=0;j--) { 
+            if ((array[i][j+3].isEmpty() == false) && (array[i][j+3].whichColor() == P.getPlayer())) {
+                if ((array[i][j+2].isEmpty() == false) && (array[i][j+2].whichColor() == P.getPlayer())) {
+                    if ((array[i][j+1].isEmpty() == false) && (array[i][j+1].whichColor() == P.getPlayer())) {
+                        if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                            return 2; // --
+                        }
+                    }
+                }
+            } else if ((array[i-3][j+3].isEmpty() == false) && (array[i-3][j+3].whichColor() == P.getPlayer())) {
+                if ((array[i-2][j+2].isEmpty() == false) && (array[i-2][j+2].whichColor() == P.getPlayer())) {
+                    if ((array[i-1][j+1].isEmpty() == false) && (array[i-1][j+1].whichColor() == P.getPlayer())) {
+                        if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                            return 2; // /
+                        }
+                    }
+                }
+            } else if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                if ((array[i-1][j].isEmpty() == false) && (array[i-1][j].whichColor() == P.getPlayer())) {
+                    if ((array[i-2][j].isEmpty() == false) && (array[i-2][j].whichColor() == P.getPlayer())) {
+                        if ((array[i-3][j].isEmpty() == false) && (array[i-3][j].whichColor() == P.getPlayer())) {
+                            return 2; // |
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    for (int i=2;i>=0;i--) { //down left
+        for (int j=3;j>=0;j--) { 
+            if ((array[i][j+3].isEmpty() == false) && (array[i][j+3].whichColor() == P.getPlayer())) {
+                if ((array[i][j+2].isEmpty() == false) && (array[i][j+2].whichColor() == P.getPlayer())) {
+                    if ((array[i][j+1].isEmpty() == false) && (array[i][j+1].whichColor() == P.getPlayer())) {
+                        if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                            return 2; // --
+                        }
+                    }
+                }
+            } else if ((array[i+3][j+3].isEmpty() == false) && (array[i+3][j+3].whichColor() == P.getPlayer())) {
+                if ((array[i+2][j+2].isEmpty() == false) && (array[i+2][j+2].whichColor() == P.getPlayer())) {
+                    if ((array[i+1][j+1].isEmpty() == false) && (array[i+1][j+1].whichColor() == P.getPlayer())) {
+                        if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                            return 2; // /
+                        }
+                    }
+                }
+            } else if ((array[i+3][j].isEmpty() == false) && (array[i+3][j].whichColor() == P.getPlayer())) {
+                if ((array[i+2][j].isEmpty() == false) && (array[i+2][j].whichColor() == P.getPlayer())) {
+                    if ((array[i+1][j].isEmpty() == false) && (array[i+1][j].whichColor() == P.getPlayer())) {
+                        if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
+                            return 2; // |
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    /*if ((line <3) && (row<=3)) {  // down left
         if ((array[line][row+1].isEmpty() == false) && (array[line][row+1].whichColor() == P.getPlayer()) && (array[line][row+2].isEmpty() == false) && (array[line][row+2].whichColor() == P.getPlayer()) && (array[line][row+3].isEmpty() == false) && (array[line][row+3].whichColor() == P.getPlayer())){
             //std::cout << "down left -> 2";
             return winScore; //  ->
@@ -77,7 +200,7 @@ int Board::getScoreWinLose(int row, Player P) { // TODO rajouter Player player e
         } else {
             return 1;
         }
-    }
+    }*/
 return 1;
     
 }
