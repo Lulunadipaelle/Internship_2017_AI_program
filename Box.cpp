@@ -20,10 +20,8 @@ bool Box::isEmpty() {
     return Empty;
 }
 
-bool Box::whichColor() { //à refaire
+bool Box::whichColor() { 
     return color.getPlayer();
 }
-/*Box::~Box()
-{
-}*/
+
 

@@ -62,7 +62,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ## User defined environment variables
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Board.cpp$(ObjectSuffix) $(IntermediateDirectory)/Player.cpp$(ObjectSuffix) $(IntermediateDirectory)/Box.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Board.cpp$(ObjectSuffix) $(IntermediateDirectory)/Player.cpp$(ObjectSuffix) $(IntermediateDirectory)/Box.cpp$(ObjectSuffix) $(IntermediateDirectory)/BestPlay.cpp$(ObjectSuffix) $(IntermediateDirectory)/BoardToFile.cpp$(ObjectSuffix) $(IntermediateDirectory)/FileToBoard.cpp$(ObjectSuffix) 
 
 
 
@@ -124,6 +124,30 @@ $(IntermediateDirectory)/Box.cpp$(DependSuffix): Box.cpp
 
 $(IntermediateDirectory)/Box.cpp$(PreprocessSuffix): Box.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Box.cpp$(PreprocessSuffix) Box.cpp
+
+$(IntermediateDirectory)/BestPlay.cpp$(ObjectSuffix): BestPlay.cpp $(IntermediateDirectory)/BestPlay.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "F:/Project/Project/AI_Tester/Internship_2017_AI_tester/BestPlay.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/BestPlay.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/BestPlay.cpp$(DependSuffix): BestPlay.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/BestPlay.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/BestPlay.cpp$(DependSuffix) -MM BestPlay.cpp
+
+$(IntermediateDirectory)/BestPlay.cpp$(PreprocessSuffix): BestPlay.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/BestPlay.cpp$(PreprocessSuffix) BestPlay.cpp
+
+$(IntermediateDirectory)/BoardToFile.cpp$(ObjectSuffix): BoardToFile.cpp $(IntermediateDirectory)/BoardToFile.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "F:/Project/Project/AI_Tester/Internship_2017_AI_tester/BoardToFile.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/BoardToFile.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/BoardToFile.cpp$(DependSuffix): BoardToFile.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/BoardToFile.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/BoardToFile.cpp$(DependSuffix) -MM BoardToFile.cpp
+
+$(IntermediateDirectory)/BoardToFile.cpp$(PreprocessSuffix): BoardToFile.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/BoardToFile.cpp$(PreprocessSuffix) BoardToFile.cpp
+
+$(IntermediateDirectory)/FileToBoard.cpp$(ObjectSuffix): FileToBoard.cpp $(IntermediateDirectory)/FileToBoard.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "F:/Project/Project/AI_Tester/Internship_2017_AI_tester/FileToBoard.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/FileToBoard.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/FileToBoard.cpp$(DependSuffix): FileToBoard.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/FileToBoard.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/FileToBoard.cpp$(DependSuffix) -MM FileToBoard.cpp
+
+$(IntermediateDirectory)/FileToBoard.cpp$(PreprocessSuffix): FileToBoard.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/FileToBoard.cpp$(PreprocessSuffix) FileToBoard.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

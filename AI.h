@@ -1,5 +1,5 @@
-#ifndef __IA_H__
-#define __IA_H__
+#ifndef __AI_H__
+#define __AI_H__
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -48,7 +48,6 @@ class Board {
     
 };
 
-//std::pair<int, int> Recursive(int depth, Player P, Board board, int row);
 std::pair<int, int> BestPlay(Player P, Board board, int depth);
 void BoardToFile(Board board, char const *filename);
 Board FileToBoard(char const *filename);

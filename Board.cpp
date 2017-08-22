@@ -5,29 +5,11 @@ for(int i = 0;i<6;i++){
 	for (int j = 0; j<7;j++){
 		array[i][j] = tab[i][j];
 		}
-	}
-    //Actual Score in the board for the AI   
+	}  
 }
 
-/*Board::~Board()
-{
-}*/
-
-int Board::getScoreWinLose(Player P) { // TODO rajouter Player player en entrée pour adapter le score selon le joueur ?
-    //int line=0;
-    //int winScore = 2;
-    /*if (P.getPlayer() == true) {
-        winScore = 2;
-    } else if (P.getPlayer() == false) {
-        winScore = 2;
-    }*/
-/*    for (int i=5;i>=0;i--) {
-        if (array[i][row].isEmpty() == false) {
-            line = i;
-            break;
-        }
-    }*/
-    //test si on a gagné
+int Board::getScoreWinLose(Player P) { 
+    //test if we've won
     for (int i=5;i>=3;i--) { //up right
         for (int j=6;j>=3;j--) { 
             if ((array[i][j].isEmpty() == false) && (array[i][j].whichColor() == P.getPlayer())) {
@@ -151,56 +133,7 @@ int Board::getScoreWinLose(Player P) { // TODO rajouter Player player en entrée
             
         }
     }
-    /*if ((line <3) && (row<=3)) {  // down left
-        if ((array[line][row+1].isEmpty() == false) && (array[line][row+1].whichColor() == P.getPlayer()) && (array[line][row+2].isEmpty() == false) && (array[line][row+2].whichColor() == P.getPlayer()) && (array[line][row+3].isEmpty() == false) && (array[line][row+3].whichColor() == P.getPlayer())){
-            //std::cout << "down left -> 2";
-            return winScore; //  ->
-        } else if ((array[line+1][row+1].isEmpty() == false) && (array[line+1][row+1].whichColor() == P.getPlayer()) && (array[line+2][row+2].isEmpty() == false) && (array[line+2][row+2].whichColor() == P.getPlayer()) && (array[line+3][row+3].isEmpty() == false) && (array[line+3][row+3].whichColor() == P.getPlayer())) {
-            //std::cout << "down left / 2";
-            return winScore; //  /
-        } else {
-            return 1;
-        }
-    }
-    if ((line <3) && (row >=3)) {  // down right
-        if ((array[line][row-1].isEmpty() == false) && (array[line][row-1].whichColor() == P.getPlayer()) && (array[line][row-2].isEmpty() == false) && (array[line][row-2].whichColor() == P.getPlayer()) && (array[line][row-3].isEmpty() == false) && (array[line][row-3].whichColor() == P.getPlayer())){
-            //std::cout << "down right <- 2";
-            return winScore; //  <-
-        } else if ((array[line+1][row-1].isEmpty() == false) && (array[line+1][row-1].whichColor() == P.getPlayer()) && (array[line+2][row-2].isEmpty() == false) && (array[line+2][row-2].whichColor() == P.getPlayer()) && (array[line+3][row-3].isEmpty() == false) && (array[line+3][row-3].whichColor() == P.getPlayer())) {
-            //std::cout << "down right / 2";
-            return winScore; //  /
-        } else {
-            return 1;
-        }
-    }
-    if ((line >= 3) && (row <= 3)) { // up left
-        if ((array[line][row+1].isEmpty() == false) && (array[line][row+1].whichColor() == P.getPlayer()) && (array[line][row+2].isEmpty() == false) && (array[line][row+2].whichColor() == P.getPlayer()) && (array[line][row+3].isEmpty() == false) && (array[line][row+3].whichColor() == P.getPlayer())){
-            //std::cout << "up left -> 2";
-            return winScore; //  ->
-        } else if ((array[line-1][row+1].isEmpty() == false) && (array[line-1][row+1].whichColor() == P.getPlayer()) && (array[line-2][row+2].isEmpty() == false) && (array[line-2][row+2].whichColor() == P.getPlayer()) && (array[line-3][row+3].isEmpty() == false) && (array[line-3][row+3].whichColor() == P.getPlayer())) {
-            //std::cout << "up left / 2";
-            return winScore; //  /
-        } else if ((array[line-1][row].isEmpty() == false) && (array[line-1][row].whichColor() == P.getPlayer()) && (array[line-2][row].isEmpty() == false) && (array[line-2][row].whichColor() == P.getPlayer()) && (array[line-3][row].isEmpty() == false) && (array[line-3][row].whichColor() == P.getPlayer())){
-            //std::cout << "down left | 2";
-            return winScore; // |
-        } else {
-            return 1;
-        }
-    }
-    if ((line >= 3) && (row >= 3)) {  // up right
-        if ((array[line][row-1].isEmpty() == false) && (array[line][row-1].whichColor() == P.getPlayer()) && (array[line][row-2].isEmpty() == false) && (array[line][row-2].whichColor() == P.getPlayer()) && (array[line][row-3].isEmpty() == false) && (array[line][row-3].whichColor() == P.getPlayer())){
-            //std::cout << "up right <- 2";
-            return winScore; //  <-
-        } else if ((array[line-1][row-1].isEmpty() == false) && (array[line-1][row-1].whichColor() == P.getPlayer()) && (array[line-2][row-2].isEmpty() == false) && (array[line-2][row-2].whichColor() == P.getPlayer()) && (array[line-3][row-3].isEmpty() == false) && (array[line-3][row-3].whichColor() == P.getPlayer())) {
-            //std::cout << "up right / 2";
-            return winScore; //  /
-        } else if ((array[line-1][row].isEmpty() == false) && (array[line-1][row].whichColor() == P.getPlayer()) && (array[line-2][row].isEmpty() == false) && (array[line-2][row].whichColor() == P.getPlayer()) && (array[line-3][row].isEmpty() == false) && (array[line-3][row].whichColor() == P.getPlayer())){
-            //std::cout << "up right | 2";
-            return winScore; // |
-        } else {
-            return 1;
-        }
-    }*/
+    //Si pas de victoire on renvoie un score neutre
 return 1;
     
 }

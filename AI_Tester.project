@@ -98,5 +98,8 @@
     <File Name="Player.cpp"/>
     <File Name="AI.h"/>
     <File Name="Box.cpp"/>
+    <File Name="BestPlay.cpp"/>
+    <File Name="BoardToFile.cpp"/>
+    <File Name="FileToBoard.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>
