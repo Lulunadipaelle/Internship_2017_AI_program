@@ -41,8 +41,8 @@ LinkOptions            :=
 IncludePath            :=  $(IncludeSwitch). $(IncludeSwitch). 
 IncludePCH             := 
 RcIncludePath          := 
-Libs                   := 
-ArLibs                 :=  
+Libs                   := $(LibrarySwitch)ws2_32 
+ArLibs                 :=  "libws2_32.a" 
 LibPath                := $(LibraryPathSwitch). 
 
 ##
