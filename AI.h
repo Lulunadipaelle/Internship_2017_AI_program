@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>
 //#include <windows.h>
 
 
@@ -48,7 +49,5 @@ class Board {
     
 };
 
-std::pair<int, int> BestPlay(Player P, Board board, int depth);
-void BoardToFile(Board board, char const *filename);
-Board FileToBoard(char const *filename);
+
 #endif

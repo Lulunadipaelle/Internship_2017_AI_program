@@ -1,1 +1,1 @@
-./Debug/main.cpp.o ./Debug/Board.cpp.o ./Debug/Player.cpp.o ./Debug/Box.cpp.o ./Debug/BestPlay.cpp.o ./Debug/BoardToFile.cpp.o ./Debug/FileToBoard.cpp.o   
+./Debug/main.cpp.o ./Debug/Board.cpp.o ./Debug/Player.cpp.o ./Debug/Box.cpp.o ./Debug/Functions.cpp.o   
